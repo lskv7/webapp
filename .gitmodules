@@ -1,0 +1,4 @@
+[submodule "packages/hardhat-ts/contracts/debond"]
+	path = packages/hardhat-ts/contracts/debond
+	url = https://github.com/Debond-Protocol/Debond-v0.git
+	branch= front
