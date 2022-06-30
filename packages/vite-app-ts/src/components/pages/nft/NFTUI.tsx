@@ -133,6 +133,20 @@ export const NFTUI: FC<NFTUIProps> = (props) => {
     return content;
   };
 
+  const renderBackground = (): any[] => {
+    const content = [];
+    const numberOfSlides: number = 11;
+    for (let i = 1; i <= numberOfSlides; i++) {
+      content.push(
+          <div  className={"divrelative"} style={{position:"relative"}} >
+            <img src={"nftfront.png"} style={{position:"absolute", width:"563px",top:"20px",left:0, right:0, margin:"auto" }}/>
+            <img src={`nft/${i}.png`} />
+          </div>
+      );
+    }
+    return content;
+  };
+
   return (
     <ContentLayout
       title={'NFT'}
@@ -141,40 +155,8 @@ export const NFTUI: FC<NFTUIProps> = (props) => {
       <Tabs defaultActiveKey="1" centered>
         <Tabs.TabPane tab="MINT D/NFT" key="1" style={{}}>
           <div style={{ position: 'relative' }}>
-            <Carousel autoplay>
-              <div>
-                <img src={'nft/1.png'} />
-              </div>
-              <div>
-                <img src={'nft/2.png'} />
-              </div>
-              <div>
-                <img src={'nft/3.png'} />
-              </div>
-              <div>
-                <img src={'nft/4.png'} />
-              </div>
-              <div>
-                <img src={'nft/5.png'} />
-              </div>
-              <div>
-                <img src={'nft/6.png'} />
-              </div>
-              <div>
-                <img src={'nft/7.png'} />
-              </div>
-              <div>
-                <img src={'nft/8.png'} />
-              </div>
-              <div>
-                <img src={'nft/9.png'} />
-              </div>
-              <div>
-                <img src={'nft/10.png'} />
-              </div>
-              <div>
-                <img src={'nft/11.png'} />
-              </div>
+            <Carousel autoplay style={{position:"relative"}}>
+              {renderBackground()}
             </Carousel>
 
             <div className={'minting-countdown'}>{countDown}</div>
