@@ -287,7 +287,8 @@
     display: block;
     position: absolute;
     right: 5%;
-    top: 40px;
+    top: 50px;
+    width: 26px;
   }
 
   #networkConnection,
@@ -313,6 +314,7 @@
 
   .burger-modal .wallet-buttons {
     margin-top: 30px !important;
+    margin-left: 0px !important;
   }
 
   #networkConnection,
