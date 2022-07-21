@@ -152,7 +152,6 @@
   margin: auto;
 }
 
-
 .nft-carousel img {
   height: 100%;
   min-height: 800px;
@@ -169,57 +168,56 @@
   width: 100%;
 }
 @media all and (min-width: 768px) {
-.inner{
-  top:150px;
-}
+  .inner {
+    top: 150px;
+  }
   .minting-divs {
     top: 280px !important;
   }
 }
-
 
 @media all and (max-width: 500px) {
   .minting-divs {
     top: 130px !important;
   }
 
-  .minting-div{
-    width:50vw;
+  .minting-div {
+    width: 50vw;
     padding: 10px;
   }
-  .minting-header,.ether-price span{
-    font-size:18px;
+  .minting-header,
+  .ether-price span {
+    font-size: 18px;
   }
-  .debond-btn{
+  .debond-btn {
     width: 70%;
   }
-  .minting-countdown{
+  .minting-countdown {
     font-size: 28px;
-    top:20px;
+    top: 20px;
   }
   .inner {
     width: 300px;
     height: 300px;
     border-radius: 150px;
-    top:100px;
+    top: 100px;
   }
   .nft-carousel img {
-    min-height: 480px!important;
+    min-height: 480px !important;
   }
-
 }
 @media all and (min-device-width: 500px) and (max-device-width: 768px) {
   .inner {
     width: 400px;
     height: 400px;
     border-radius: 200px;
-    top:100px;
+    top: 100px;
   }
   .minting-div {
-    width:250px;
+    width: 250px;
     padding: 15px;
   }
   .nft-carousel img {
-    min-height: 580px!important;
+    min-height: 580px !important;
   }
 }

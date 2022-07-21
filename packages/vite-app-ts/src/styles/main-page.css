@@ -278,25 +278,26 @@
   /* Debond White */
   color: #ffffff;
 }
-#burger-menu{
+#burger-menu {
   display: none;
 }
 
 @media all and (max-width: 768px) {
-  #burger-menu{
+  #burger-menu {
     display: block;
     position: absolute;
     right: 5%;
-    top:40px
+    top: 40px;
   }
 
-  #networkConnection, .leftWallet {
-    display: none!important;
+  #networkConnection,
+  .leftWallet {
+    display: none !important;
   }
-  .ant-modal-content{
+  .ant-modal-content {
     height: 600px;
   }
-  .ant-modal-body{
+  .ant-modal-body {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -304,18 +305,20 @@
     height: 100%;
   }
 
-  .burger-modal #walletConnector, .burger-modal #networkConnection{
+  .burger-modal #walletConnector,
+  .burger-modal #networkConnection {
     position: initial;
-    display: block!important;
+    display: block !important;
   }
 
-  .burger-modal .wallet-buttons  {
-    margin-top:30px!important;
+  .burger-modal .wallet-buttons {
+    margin-top: 30px !important;
   }
 
-  #networkConnection, #walletConnector, .wallet-buttons button{
+  #networkConnection,
+  #walletConnector,
+  .wallet-buttons button {
     width: 280px;
     min-width: 280px;
   }
 }
-
