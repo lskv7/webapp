@@ -12,7 +12,11 @@ export const useMintingPrice = (discountEntry: UserEntry | undefined): BigNumber
   const startingTime = useContractReader(mysteryBoxToken, mysteryBoxToken?.startingTime)[0];
   const duration = useContractReader(mysteryBoxToken, mysteryBoxToken?.duration)[0] as BigNumber;
   if (startingTime && '0' === startingTime.toString()) {
-    return utils.parseEther('0.2');
+    let price = 0.2;
+    if (discountEntry) {
+      price *= 0.01 * (100 - discountEntry.discountRate);
+    }
+    return utils.parseEther(price.toString());
   }
   if (duration && startingTime) {
     const percentage = (Date.now() / 1000 - startingTime.toNumber()) / duration.toNumber();
