@@ -45,6 +45,7 @@ export const NFTUI: FC<NFTUIProps> = (props) => {
   const mintingPrice = useMintingPrice(discountEntry);
   const [address] = useSignerAddress(ethersContext.signer);
   const [balanceToken, ,] = useTokenBalance(mysteryBoxToken, address ?? '');
+  const claimed = useContractReader(mysteryBoxToken, mysteryBoxToken?.discountClaimed, [address!])[0];
   useEffect(() => {
     async function _init(): Promise<void> {
       // TODO change this reading file, temporary fix, problem when building app
@@ -80,7 +81,7 @@ export const NFTUI: FC<NFTUIProps> = (props) => {
   const mint = (): void => {
     console.log(saleOn);
     setErrorMessage('');
-    if (discountEntry && Object.keys(discountEntry).length > 0) {
+    if (discountEntry && Object.keys(discountEntry).length > 0 && !claimed) {
       const userEntry = discountEntry;
       const result = tx?.(
         mysteryBoxToken?.mintDiscount(userEntry['discountRate'], userEntry['signature'], {

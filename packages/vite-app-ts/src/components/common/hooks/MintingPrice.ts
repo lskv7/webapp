@@ -10,18 +10,22 @@ export const useMintingPrice = (discountEntry: UserEntry | undefined): BigNumber
   const ethersContext = useEthersContext();
   const mysteryBoxToken = useAppContracts('MysteryBoxToken', ethersContext.chainId) as MysteryBoxToken;
   const startingTime = useContractReader(mysteryBoxToken, mysteryBoxToken?.startingTime)[0];
+  const claimed = useContractReader(mysteryBoxToken, mysteryBoxToken?.discountClaimed, [
+    discountEntry?.address as string,
+  ])[0];
   const duration = useContractReader(mysteryBoxToken, mysteryBoxToken?.duration)[0] as BigNumber;
+
+  let price = 0.2;
   if (startingTime && '0' === startingTime.toString()) {
-    let price = 0.2;
-    if (discountEntry) {
+    if (discountEntry && !claimed) {
       price *= 0.01 * (100 - discountEntry.discountRate);
     }
     return utils.parseEther(price.toString());
   }
   if (duration && startingTime) {
     const percentage = (Date.now() / 1000 - startingTime.toNumber()) / duration.toNumber();
-    let price = 0.2 + 0.3 * percentage;
-    if (discountEntry) {
+    price += 0.3 * percentage;
+    if (discountEntry && !claimed) {
       price *= 0.01 * (100 - discountEntry.discountRate);
     }
     return utils.parseEther(price.toString().substring(0, 19));
