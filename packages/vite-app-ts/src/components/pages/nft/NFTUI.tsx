@@ -42,7 +42,7 @@ export const NFTUI: FC<NFTUIProps> = (props) => {
   const tx = transactor(ethComponentsSettings, ethersContext?.signer, gasPrice);
   const endingTime = useContractReader(mysteryBoxToken, mysteryBoxToken?.endingTime)[0];
   const saleOn = useContractReader(mysteryBoxToken, mysteryBoxToken?.saleOn)[0];
-  const mintingPrice = useMintingPrice();
+  const mintingPrice = useMintingPrice(discountEntry);
   const [address] = useSignerAddress(ethersContext.signer);
   const [balanceToken, ,] = useTokenBalance(mysteryBoxToken, address ?? '');
   useEffect(() => {
