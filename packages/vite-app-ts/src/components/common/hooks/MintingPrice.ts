@@ -19,19 +19,19 @@ export const useMintingPrice = (discountEntry: UserEntry | undefined): BigNumber
 
   useEffect(() => {
     let price = 0.2;
-    if (startingTime && '0' === startingTime.toString() && discountEntry) {
+    if (startingTime && '0' === startingTime.toString()) {
       console.log(discountEntry?.discountRate);
-      if (discountEntry && !claimed) {
+      if (discountEntry && !claimed && discountEntry && discountEntry.discountRate) {
         price *= 0.01 * (100 - discountEntry.discountRate);
       }
       setBnPrice(utils.parseEther(price.toString()));
     }
-    if (duration && startingTime && discountEntry && discountEntry.discountRate) {
+    if (duration && startingTime) {
       console.log(discountEntry?.discountRate);
       const percentage = (Date.now() / 1000 - startingTime.toNumber()) / duration.toNumber();
       console.log(percentage);
       price += 0.3 * percentage;
-      if (discountEntry && !claimed) {
+      if (discountEntry && !claimed && discountEntry && discountEntry.discountRate) {
         price *= 0.01 * (100 - discountEntry.discountRate);
       }
       console.log(price);
