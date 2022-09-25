@@ -51,9 +51,6 @@ export const NFTUI: FC<NFTUIProps> = (props) => {
       // TODO change this reading file, temporary fix, problem when building app
       const discountsResults = await fetch('../../discounts.json');
       const discounts: any = await discountsResults.json();
-      console.log(discounts);
-      console.log(discountsResults);
-
       if (discounts && address) {
         console.log('discounted user');
         const entry = discounts.filter((e: any) => e['address'] === address);
@@ -79,7 +76,6 @@ export const NFTUI: FC<NFTUIProps> = (props) => {
   }, 1000);
 
   const mint = (): void => {
-    console.log(saleOn);
     setErrorMessage('');
     if (discountEntry && Object.keys(discountEntry).length > 0 && !claimed) {
       const userEntry = discountEntry;
