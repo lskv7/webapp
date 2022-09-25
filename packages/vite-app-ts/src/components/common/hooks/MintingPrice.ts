@@ -26,7 +26,7 @@ export const useMintingPrice = (discountEntry: UserEntry | undefined): BigNumber
       }
       setBnPrice(utils.parseEther(price.toString()));
     }
-    if (duration && startingTime && discountEntry) {
+    if (duration && startingTime && discountEntry && discountEntry.discountRate) {
       console.log(discountEntry?.discountRate);
       const percentage = (Date.now() / 1000 - startingTime.toNumber()) / duration.toNumber();
       console.log(percentage);
@@ -37,7 +37,7 @@ export const useMintingPrice = (discountEntry: UserEntry | undefined): BigNumber
       console.log(price);
       setBnPrice(utils.parseEther(price.toString().substring(0, 19)));
     }
-  }, [claimed, duration, discountEntry, startingTime, mysteryBoxToken]);
+  }, [claimed, duration, startingTime, mysteryBoxToken]);
 
   return bnPrice;
 };
