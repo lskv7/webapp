@@ -17,17 +17,21 @@ export const useMintingPrice = (discountEntry: UserEntry | undefined): BigNumber
 
   let price = 0.2;
   if (startingTime && '0' === startingTime.toString()) {
+    console.log(discountEntry?.discountRate);
     if (discountEntry && !claimed) {
       price *= 0.01 * (100 - discountEntry.discountRate);
     }
     return utils.parseEther(price.toString());
   }
   if (duration && startingTime) {
+    console.log(discountEntry?.discountRate);
     const percentage = (Date.now() / 1000 - startingTime.toNumber()) / duration.toNumber();
+    console.log(percentage);
     price += 0.3 * percentage;
     if (discountEntry && !claimed) {
       price *= 0.01 * (100 - discountEntry.discountRate);
     }
+    console.log(price);
     return utils.parseEther(price.toString().substring(0, 19));
   }
   return undefined;
