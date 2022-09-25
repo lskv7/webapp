@@ -64,13 +64,17 @@ export const NFTUI: FC<NFTUIProps> = (props) => {
       void _init();
     }
   }, [address]);
+  console.log(endingTime);
   useInterval(() => {
     if (!saleOn) {
       setCountDown('Not started');
     } else if (endingTime!.toString() === '0') {
       setCountDown('Open now');
     } else if (endingTime) {
-      const _countdown = moment.utc(moment.unix(endingTime.toNumber()).diff(moment())).format('HH:mm:ss') + ' s';
+      console.log(endingTime);
+      const _time = moment.utc(moment.unix(endingTime.toNumber()).diff(moment()));
+      console.log(_time.days());
+      const _countdown = _time.format('DD:HH:mm:ss') + ' s';
       setCountDown(_countdown);
     }
   }, 1000);
