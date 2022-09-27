@@ -71,7 +71,7 @@ export const NFTUI: FC<NFTUIProps> = (props) => {
       setCountDown('Open now');
     } else if (endingTime) {
       const _time = moment.duration(moment(endingTime.toNumber() * 1000).diff(moment()));
-      const _countdown = `${_time.days()}:${moment.utc(_time.asMilliseconds()).format('HH:mm:ss')}`;
+      const _countdown = `${_time.days()} days ${moment.utc(_time.asMilliseconds()).format('HH:mm:ss')}`;
       setCountDown(_countdown);
     }
   }, 1000);
